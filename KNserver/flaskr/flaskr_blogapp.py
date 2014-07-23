@@ -1,6 +1,10 @@
 #Noah Rubin
 #06/26/2014
 #Flaskr_blogapp.py
+# check MVC model for a web project
+# seprate different function in to different file, not in one file.
+# what's the difference between analyse and KNserver/flaskr/jieba/analyse? Try to reorginize the project
+# remove all the file with suffix *.*~ by add all this file type in .gitignore
 
 #import necessary libraries and methods
 import os
@@ -49,6 +53,7 @@ def unauthorized():
 	return make_response(jsonify( { 'error': 'Unauthorized access' } ), 403)
 	# return 403 instead of 401 to prevent browsers from displaying the default auth dialog
 
+# two not_found function?
 @app.errorhandler(400)
 def not_found(error):
 	return make_response(jsonify( { 'error': 'Bad request' } ), 400)
@@ -118,6 +123,7 @@ def inject_citiesDict():
 	global citiesDict
 	return dict(citiesDict = citiesDict)
 
+# why should we insert db here?
 @auth.login_required
 @app.route('/process', methods = ['POST'])
 def process_words():
